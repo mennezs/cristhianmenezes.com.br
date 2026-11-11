@@ -39252,7 +39252,7 @@ const II = ["href", "target", "rel"],
                 Ft(fp, {
                   class: "contact__link",
                   href: "https://cristhianmenezes.com.br/links",
-                  label: "More Links",
+                  label: "More Links :D",
                   rel: "noopener noreferrer",
                 }),
               ]),
