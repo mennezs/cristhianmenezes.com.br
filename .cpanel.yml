@@ -1,0 +1,4 @@
+---
+deployment:
+  tasks:
+    - /bin/cp -a site/. /home1/cristh65/cristhianmenezes.com.br/
