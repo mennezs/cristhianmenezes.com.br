@@ -1,0 +1,509 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="/favicon.png" />
+
+    <!-- Ícone do "app" (tela de início do celular) e favoritos -->
+    <link rel="icon" type="image/png" sizes="32x32" href="/icons-app/favicon-32.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/links/manifest.webmanifest" />
+    <meta name="theme-color" content="#0000a0" />
+    <meta name="apple-mobile-web-app-title" content="Links" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+    <title>Cristhian Menezes :] Links</title>
+    <meta name="description" content="Todos os links do Cristhian Menezes: redes sociais, portfólio e projetos." />
+
+    <meta property="og:title" content="Cristhian Menezes :] Links" />
+    <meta property="og:description" content="Todos os links do Cristhian Menezes: redes sociais, portfólio e projetos." />
+    <meta property="og:image" content="https://cristhianmenezes.com.br/social-share.jpg" />
+    <meta property="og:url" content="https://cristhianmenezes.com.br/links/" />
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <link rel="preload" href="/fonts/Comic_CAT.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Comic+Neue:wght@700&display=swap" rel="stylesheet" />
+
+    <style>
+      /* ---- Identidade do site principal (site/assets/main.css) ---------- */
+      @font-face {
+        font-family: "Comic CAT";
+        font-style: normal;
+        font-weight: 400;
+        font-display: swap;
+        src:
+          url(/fonts/Comic_CAT.woff2) format("woff2"),
+          url(/fonts/Comic_CAT.woff) format("woff");
+        /* A Comic CAT não tem acentos (ç, ã, é...). Limitando a fonte ao ASCII,
+           as letras acentuadas usam a Comic Neue, que tem traço parecido. */
+        unicode-range: U+0020-007E;
+      }
+
+      :root {
+        --blue: #0000a0;      /* fundo do site */
+        --black: #1c1c1c;     /* painéis e botões */
+        --grey-dark: #343434;
+        --grey: #c9c9c9;      /* textos secundários */
+        --white: #ffffff;
+
+        --radius-panel: 2rem; /* mesmo raio do painel do site */
+        --radius-icon: 0.875rem;
+        --elastic: cubic-bezier(0.34, 1.56, 0.64, 1);
+        --ease-out: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      }
+
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      html,
+      body {
+        min-height: 100svh;
+        background-color: var(--blue);
+      }
+
+      body {
+        font-family: "Comic CAT", "Comic Neue", sans-serif;
+        text-transform: uppercase;
+        color: var(--white);
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+      }
+
+      ::selection {
+        color: var(--black);
+        background-color: var(--white);
+      }
+
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+
+      img {
+        display: block;
+        max-width: 100%;
+      }
+
+      /* ---- Layout -------------------------------------------------------- */
+      .page {
+        width: 100%;
+        max-width: 36rem;
+        margin: 0 auto;
+        padding: 3.5rem 1rem 2.5rem;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+
+      /* ---- Cabeçalho ----------------------------------------------------- */
+      .avatar {
+        width: 10rem;
+        height: 10rem;
+        border-radius: 50%;
+        overflow: hidden;
+        display: grid;
+        place-items: center;
+        flex-shrink: 0;
+      }
+
+      .avatar img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      .name {
+        margin-top: 1.25rem;
+        font-weight: 400;
+        font-size: 1.5rem;
+        line-height: 1.1;
+        letter-spacing: -0.02em;
+        text-align: center;
+        text-wrap: balance;
+      }
+
+      .bio {
+        margin-top: 0.625rem;
+        max-width: 26rem;
+        color: var(--grey);
+        font-size: 1.0625rem;
+        line-height: 1.25;
+        text-align: center;
+        text-wrap: balance;
+      }
+
+      /* ---- Redes sociais ------------------------------------------------- */
+      .socials {
+        margin-top: 1.5rem;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 0.75rem;
+        list-style: none;
+      }
+
+      .social {
+        width: 3rem;
+        height: 3rem;
+        border-radius: 50%;
+        background-color: var(--black);
+        display: grid;
+        place-items: center;
+        transition:
+          transform 0.5s var(--elastic),
+          background-color 0.15s var(--ease-out);
+      }
+
+      .social img {
+        width: 1.5rem;
+        height: 1.5rem;
+        object-fit: contain;
+      }
+
+      .social:hover,
+      .social:focus-visible {
+        transform: scale(1.12) rotate(-6deg);
+        background-color: var(--white);
+        color: var(--black);
+      }
+
+      /* ---- Lista de links ------------------------------------------------ */
+      .links {
+        width: 100%;
+        margin-top: 2.25rem;
+        display: flex;
+        flex-direction: column;
+        gap: 0.875rem;
+        list-style: none;
+      }
+
+      .section-title {
+        margin-top: 1.25rem;
+        padding: 0 0.5rem;
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+        color: var(--grey);
+        font-size: 1rem;
+      }
+
+      /* linha igual à da lista de projetos do site */
+      .section-title::after {
+        content: "";
+        height: 2px;
+        flex: 1;
+        background-color: var(--grey);
+        opacity: 0.5;
+      }
+
+      .link {
+        position: relative;
+        display: block;
+        background-color: var(--black);
+        border-radius: var(--radius-panel);
+        overflow: hidden;
+        transition:
+          transform 0.6s var(--elastic),
+          background-color 0.15s var(--ease-out),
+          color 0.15s var(--ease-out);
+      }
+
+      .link:hover,
+      .link:focus-visible {
+        transform: scale(1.025) rotate(-0.6deg);
+        background-color: var(--white);
+        color: var(--black);
+      }
+
+      .link:active {
+        transform: scale(0.98);
+        transition-duration: 0.1s;
+      }
+
+      .link__image {
+        aspect-ratio: 16 / 9;
+        width: 100%;
+        object-fit: cover;
+      }
+
+      .link__body {
+        min-height: 4.25rem;
+        padding: 0.75rem 1.25rem 0.75rem 0.75rem;
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+      }
+
+      .link__icon {
+        width: 2.75rem;
+        height: 2.75rem;
+        border-radius: var(--radius-icon);
+        overflow: hidden;
+        flex-shrink: 0;
+        display: grid;
+        place-items: center;
+      }
+
+      .link__icon img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+      }
+
+      .link__text {
+        flex: 1;
+        min-width: 0;
+      }
+
+      .link__title {
+        font-size: 1.125rem;
+        line-height: 1.15;
+        letter-spacing: -0.02em;
+      }
+
+      .link__description {
+        margin-top: 0.25rem;
+        color: var(--grey);
+        font-size: 0.9375rem;
+        line-height: 1.2;
+        transition: color 0.15s var(--ease-out);
+      }
+
+      .link:hover .link__description,
+      .link:focus-visible .link__description {
+        color: var(--grey-dark);
+      }
+
+      .link__arrow {
+        flex-shrink: 0;
+        font-size: 1.25rem;
+        transition: transform 0.5s var(--elastic);
+      }
+
+      .link:hover .link__arrow,
+      .link:focus-visible .link__arrow {
+        transform: translateX(0.25rem) rotate(-45deg);
+      }
+
+      /* Espaço reservado para ícone ainda não definido */
+      .placeholder {
+        width: 100%;
+        height: 100%;
+        border: 2px dashed currentColor;
+        border-radius: inherit;
+        opacity: 0.45;
+        display: grid;
+        place-items: center;
+        font-size: 1.125rem;
+        line-height: 1;
+      }
+
+      .avatar .placeholder {
+        font-size: 2rem;
+        color: var(--grey);
+      }
+
+      .social .placeholder {
+        border: 0;
+        opacity: 1;
+        font-size: 1rem;
+      }
+
+      :focus-visible {
+        outline: 2px solid var(--white);
+        outline-offset: 3px;
+      }
+
+      /* ---- Rodapé -------------------------------------------------------- */
+      .footer {
+        margin-top: 3rem;
+        color: var(--grey);
+        font-size: 1rem;
+        transition: color 0.15s var(--ease-out);
+      }
+
+      .footer:hover {
+        color: var(--white);
+      }
+
+      /* ---- Entrada com "pulo" elástico, como no site --------------------- */
+      .pop {
+        opacity: 0;
+        transform: translateY(1.5rem) scale(0.6);
+        animation: pop 0.9s var(--elastic) forwards;
+        animation-delay: calc(var(--i, 0) * 45ms + 80ms);
+      }
+
+      @keyframes pop {
+        to {
+          opacity: 1;
+          transform: none;
+        }
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        *,
+        *::before,
+        *::after {
+          animation: none !important;
+          transition: none !important;
+        }
+        .pop {
+          opacity: 1;
+          transform: none;
+        }
+      }
+
+      @media (min-width: 48em) {
+        .page {
+          padding-top: 5rem;
+        }
+        .name {
+          font-size: 1.75rem;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <main class="page">
+      <header class="avatar pop" id="avatar"></header>
+      <h1 class="name pop" id="name"></h1>
+      <p class="bio pop" id="bio"></p>
+      <ul class="socials" id="socials" aria-label="Redes sociais"></ul>
+      <ul class="links" id="links"></ul>
+      <a class="footer pop" id="footer"></a>
+    </main>
+
+    <!-- Todo o conteúdo editável fica em config.js -->
+    <script src="config.js"></script>
+    <script>
+      (function () {
+        var cfg = window.LINKS_CONFIG || {};
+        var profile = cfg.profile || {};
+        var order = 0;
+
+        function el(tag, className, text) {
+          var node = document.createElement(tag);
+          if (className) node.className = className;
+          if (text) node.textContent = text;
+          return node;
+        }
+
+        function pop(node) {
+          node.classList.add("pop");
+          node.style.setProperty("--i", order++);
+          return node;
+        }
+
+        // Imagem se existir, senão um espaço reservado com a inicial.
+        function iconOrPlaceholder(src, label) {
+          if (src) {
+            var img = el("img");
+            img.src = src;
+            img.alt = "";
+            img.loading = "lazy";
+            return img;
+          }
+          return el("span", "placeholder", (label || "?").trim().charAt(0).toUpperCase());
+        }
+
+        function setTarget(a, url) {
+          a.href = url || "#";
+          if (/^https?:\/\//.test(url)) {
+            a.target = "_blank";
+            a.rel = "noopener noreferrer";
+          }
+        }
+
+        // Cabeçalho
+        pop(document.getElementById("avatar")).appendChild(
+          iconOrPlaceholder(profile.avatar, profile.name)
+        );
+        pop(document.getElementById("name")).textContent = profile.name || "";
+        var bio = pop(document.getElementById("bio"));
+        if (profile.bio) bio.textContent = profile.bio;
+        else bio.remove();
+
+        // Redes sociais
+        var socials = document.getElementById("socials");
+        (cfg.socials || []).forEach(function (s) {
+          var li = pop(el("li"));
+          var a = el("a", "social");
+          setTarget(a, s.url);
+          a.setAttribute("aria-label", s.label || s.url);
+          a.title = s.label || "";
+          a.appendChild(iconOrPlaceholder(s.icon, s.label));
+          li.appendChild(a);
+          socials.appendChild(li);
+        });
+        if (!socials.children.length) socials.remove();
+
+        // Links
+        var list = document.getElementById("links");
+        (cfg.links || []).forEach(function (item) {
+          var li = pop(el("li"));
+
+          if (item.section) {
+            li.className += " section-title";
+            li.textContent = item.section;
+            list.appendChild(li);
+            return;
+          }
+
+          var a = el("a", "link");
+          setTarget(a, item.url);
+
+          if (item.image) {
+            var img = el("img", "link__image");
+            img.src = item.image;
+            img.alt = "";
+            img.loading = "lazy";
+            a.appendChild(img);
+          }
+
+          var body = el("span", "link__body");
+          var icon = el("span", "link__icon");
+          icon.appendChild(iconOrPlaceholder(item.icon, item.title));
+          body.appendChild(icon);
+
+          var text = el("span", "link__text");
+          text.appendChild(el("span", "link__title", item.title || ""));
+          if (item.description) {
+            var desc = el("span", "link__description", item.description);
+            desc.style.display = "block";
+            text.appendChild(desc);
+          }
+          body.appendChild(text);
+          body.appendChild(el("span", "link__arrow", "→"));
+          a.appendChild(body);
+
+          li.appendChild(a);
+          list.appendChild(li);
+        });
+
+        // Rodapé
+        var footer = pop(document.getElementById("footer"));
+        if (cfg.footer && cfg.footer.text) {
+          footer.textContent = cfg.footer.text;
+          setTarget(footer, cfg.footer.url);
+        } else {
+          footer.remove();
+        }
+
+        console.log("Font : Comic CAT by Vitaly Lazarenko");
+      })();
+    </script>
+  </body>
+</html>
