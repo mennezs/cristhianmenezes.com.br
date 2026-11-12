@@ -1,19 +1,15 @@
 // ==============================================================================
-// main.js — versão formatada (legível) do bundle do site.
-// O original minificado está em _backup-minificado/ na raiz do projeto.
 //
-// Use a busca do editor para pular entre as seções:
-//   [LIB-n]  = bibliotecas de terceiros. Não precisa ler nem editar.
-//   [SITE-n] = código do site. É aqui que se edita.
+// busca do editor para pular entre as seções:
+//   [LIB-n]  = bibliotecas de terceiros.
+//   [SITE-n] = código do site.
 //
 // Atalhos mais úteis:
 //   [SITE-8]  textos da seção Sobre (nome, descrição, contatos)
 //   [SITE-9]  lista de projetos
 //   [SITE-1]  texturas da cena 3D
-//   [SITE-3]  como ligar o painel de debug
+//   [SITE-3]  ligar o painel de debug
 //
-// Os nomes de variáveis (n, e, t, Oe, K_...) foram encurtados pela build e
-// não dá pra recuperar os originais. Edite procurando pelos textos/strings.
 // ==============================================================================
 var KS = Object.defineProperty;
 var ZS = (n, e, t) =>
@@ -39181,7 +39177,7 @@ const II = ["href", "target", "rel"],
   },
   kI = wi(BI, [["__scopeId", "data-v-96afd8fa"]]),
 // ==============================================================================
-// [SITE-8] Seção SOBRE (about): seu nome, descrição, LinkedIn, site, e-mail
+// [SITE-8] Seção SOBRE (about)
 // ==============================================================================
   zI = { class: "about__contact contact" },
   HI = {

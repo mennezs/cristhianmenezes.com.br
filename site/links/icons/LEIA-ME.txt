@@ -1,3 +1,0 @@
-Coloque aqui seus ícones (svg, png ou webp).
-Depois aponte para eles no config.js, ex.: icon: "icons/instagram.svg"
-Tamanho sugerido: quadrado, 96x96 px ou SVG.
