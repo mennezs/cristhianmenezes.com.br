@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="noindex" />
+    <meta name="theme-color" content="#0000a0" />
+    <link rel="icon" href="/favicon.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+
+    <title>Cristhian Menezes :] Falha ao carregar</title>
+
+    <!--
+      Falha de recurso. O /index.html redireciona pra cá quando /assets/main.js ou /assets/main.css não carregam (onerror).
+      Estilo em /errors/error.css. Use sempre caminhos absolutos (começando com "/").
+    -->
+
+    <link rel="preload" href="/fonts/Comic_CAT.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Comic+Neue:wght@700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="/errors/error.css" />
+  </head>
+  <body>
+    <div class="scene">
+      <div class="hanger">
+        <span class="nail" aria-hidden="true"></span>
+        <svg class="rope" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
+          <line x1="50" y1="10" x2="15" y2="100" />
+          <line x1="50" y1="10" x2="85" y2="100" />
+        </svg>
+        <main class="card">
+          <img class="avatar" src="/links/icons/avatar.png" alt="" width="112" height="112" />
+          <p class="code" aria-hidden="true">:[</p>
+          <h1 class="title">Falha ao carregar</h1>
+          <p class="text">Alguns arquivos do site não carregaram. Pode ser a conexão ou um bloqueador de conteúdo.</p>
+          <nav class="actions">
+            <a class="btn btn--primary" href="/">Tentar de novo</a>
+            <a class="btn" href="/links/">Meus links</a>
+          </nav>
+        </main>
+      </div>
+    </div>
+  </body>
+</html>

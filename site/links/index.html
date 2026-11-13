@@ -490,5 +490,13 @@
         console.log("Font : Comic CAT by Vitaly Lazarenko");
       })();
     </script>
+    <!-- Service worker: só serve /errors/offline.html quando não há internet (ver /sw.js) -->
+    <script>
+      if ("serviceWorker" in navigator) {
+        addEventListener("load", function () {
+          navigator.serviceWorker.register("/sw.js");
+        });
+      }
+    </script>
   </body>
 </html>

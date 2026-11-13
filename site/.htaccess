@@ -1,4 +1,33 @@
-# Páginas de erro personalizadas (Apache / cPanel).
+# Páginas de erro personalizadas (Apache / cPanel). Ficam em /errors/.
 # Use caminho absoluto a partir da raiz do site. NÃO use URL completa
-# (https://...), senão o Apache faz redirect e o navegador recebe 302 em vez de 404.
-ErrorDocument 404 /404.html
+# (https://...), senão o Apache faz redirect e o navegador recebe 302 em vez do código real.
+ErrorDocument 403 /errors/403.html
+ErrorDocument 404 /errors/404.html
+ErrorDocument 500 /errors/500.html
+ErrorDocument 502 /errors/502.html
+ErrorDocument 503 /errors/503.html
+ErrorDocument 504 /errors/504.html
+
+# O service worker não pode ficar em cache, senão atualizações dele demoram a chegar.
+<Files "sw.js">
+  <IfModule mod_headers.c>
+    Header set Cache-Control "no-cache"
+  </IfModule>
+</Files>
+
+# ---------------------------------------------------------------------------
+# MODO MANUTENÇÃO: descomente o bloco abaixo, faça o deploy e todo o site
+# responde 503 com /errors/maintenance.html. Para desligar, comente de novo.
+# Para você continuar vendo o site, descomente a linha do REMOTE_ADDR com o seu IP.
+# ---------------------------------------------------------------------------
+# ErrorDocument 503 /errors/maintenance.html
+# <IfModule mod_rewrite.c>
+#   RewriteEngine On
+#   # RewriteCond %{REMOTE_ADDR} !^123\.123\.123\.123$
+#   RewriteCond %{REQUEST_URI} !^/(errors|fonts|links/icons)/
+#   RewriteCond %{REQUEST_URI} !^/(favicon\.png|apple-touch-icon\.png)$
+#   RewriteRule ^ - [R=503,L]
+# </IfModule>
+# <IfModule mod_headers.c>
+#   Header always set Retry-After "3600" "expr=%{REQUEST_STATUS} == 503"
+# </IfModule>
