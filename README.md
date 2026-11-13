@@ -32,9 +32,6 @@ Portfólio interativo em WebGL com uma cabeça ilustrada que reage ao mouse, rab
 - [Editando o conteúdo](#editando-o-conteúdo)
 - [Página de links](#página-de-links)
 - [Ícones e PWA](#ícones-e-pwa)
-- [Deploy](#deploy)
-- [Problemas conhecidos](#problemas-conhecidos)
-- [Créditos](#créditos)
 
 ## Sobre o projeto
 
@@ -111,9 +108,6 @@ Tudo fica em `site/assets/main.js`. Use a busca do editor para pular até o bann
 | Imagens e vídeos do player e dos botões | constantes de texto em `[SITE-10]` |
 | Título, descrição e meta tags de compartilhamento | `site/index.html` |
 
-> [!TIP]
-> Para ligar o painel de ajustes (Tweakpane), troque para `this.isActive = !0` no construtor em `[SITE-3]`.
-
 > [!IMPORTANT]
 > Depois de editar, confira a sintaxe. Como o arquivo é um módulo ES, copie para `.mjs` antes de checar:
 >
@@ -153,30 +147,6 @@ links: [
 | `site/apple-touch-icon.png` | 180 px na raiz, porque o iOS pede exatamente esse caminho |
 | `site/site.webmanifest` | Manifesto do site principal (`start_url: /`) |
 | `site/links/manifest.webmanifest` | Manifesto da página de links (`start_url: /links/`) |
-
-## Deploy
-
-Todo `push` na branch `main` que altera `site/**` dispara o workflow [`deploy.yml`](.github/workflows/deploy.yml), que envia `site/` para o servidor via **FTPS** usando [FTP-Deploy-Action](https://github.com/SamKirkland/FTP-Deploy-Action).
-
-Configure estes *secrets* no repositório:
-
-| Secret | Descrição |
-|---|---|
-| `FTP_SERVER` | Host do servidor |
-| `FTP_USERNAME` | Usuário FTP |
-| `FTP_PASSWORD` | Senha FTP |
-| `FTP_PORT` | Porta (normalmente `21`) |
-
-Também há um [`.cpanel.yml`](.cpanel.yml) para quem preferir o deploy pelo **Git Version Control** do cPanel.
-
-## Problemas conhecidos
-
-- `/images/ctas/tex-ui-switch-fe-off.webp` também existe em `videos/`. O bundle usa a cópia em `images/ctas/`, então não a remova.
-- Parte do material herdado do projeto base ainda não foi trocada, como alguns vídeos em `videos/` e texturas ilustradas.
-
-## Créditos
-
-O site foi adaptado do portfólio de **[Adrien Lamy](https://adrienlamy.fr)**. A estrutura WebGL e boa parte da interface vêm do trabalho original dele.
 
 Bibliotecas usadas: [Vue](https://vuejs.org) · [vue-router](https://router.vuejs.org) · [Three.js](https://threejs.org) · [postprocessing](https://github.com/pmndrs/postprocessing) · [GSAP](https://gsap.com) · [OverlayScrollbars](https://kingsora.github.io/OverlayScrollbars) · [Tweakpane](https://tweakpane.github.io/docs)
 
